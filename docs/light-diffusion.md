@@ -43,4 +43,18 @@ Attendez quelques secondes. Grâce aux optimisations comme `Stable-Fast`, vous v
 
 ---
 
+## 🧪 Le Labo du Savant Fou (Expériences "Stupides")
+
+N'ayez pas peur de casser les réglages ! C'est comme ça qu'on comprend comment l'IA réfléchit.
+
+!!! abstract "Défi : Le CFG de l'enfer"
+    - **CFG à 1.0 :** L'IA ignore presque totalement votre texte. Elle devient "paresseuse" et génère des formes vagues et délavées. C'est l'anarchie créative.
+    - **CFG à 30.0 :** On appelle ça l'effet "Deep Fried". L'IA essaie tellement fort de suivre vos ordres que les couleurs brûlent et les détails deviennent grotesques.
+
+!!! info "La course aux Steps"
+    - **1 Step :** Vous obtiendrez une bouillie de pixels colorés. C'est le "premier jet" brut de l'imagination de l'IA.
+    - **100 Steps :** C'est souvent une perte de temps. L'IA va passer des minutes à polir des détails que l'œil humain ne verra même pas, et peut même introduire des artefacts bizarres.
+
+---
+
 [Suivant : Nœuds avancés avec ComfyUI &rarr;](comfyui.md)

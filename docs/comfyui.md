@@ -55,6 +55,9 @@ Ouvrez ComfyUI et essayez de recréer ceci. Voici la logique à suivre :
 !!! warning "Erreur Courante"
     Oublier de connecter le **VAE** du nœud "Load Checkpoint" vers le nœud "VAE Decode" provoquera une erreur. L'IA a besoin de ce VAE spécifique pour "traduire" l'espace latent en couleurs !
 
+!!! tip "Astuce de Pro : Le bruit n'est pas votre ennemi"
+    Dans le nœud **Empty Latent Image**, essayez de changer la taille à `64x64` tout en gardant une sortie finale en `512x512`. Vous verrez l'IA essayer de transformer de gros blocs de couleur en objets détaillés. C'est le secret pour créer des compositions artistiques abstraites !
+
 ---
 
 ## 🎯 Objectif Final
