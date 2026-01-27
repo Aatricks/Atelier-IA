@@ -1,28 +1,28 @@
-# ComfyUI: Thinking in Nodes
+# ComfyUI : Penser en Nœuds
 
-Welcome to the "Boss Level." **ComfyUI** is a node-based interface. Instead of simple buttons, you see the actual "piping" of the AI.
-
----
-
-## 🏗️ The Anatomy of a Workflow
-
-In ComfyUI, every action is a "Node." To make an image, data must flow from the model through several steps until it becomes pixels.
-
-### The Basic Blocks:
-1.  **Load Checkpoint:** Loads the AI model.
-2.  **CLIP Text Encode:** Turns your prompt into numbers the AI understands.
-3.  **Empty Latent Image:** Creates the "blank canvas" of noise.
-4.  **KSampler:** The engine that does the denoising.
-5.  **VAE Decode:** Converts the result from "math" (Latent) to "pixels" (Image).
+Bienvenue au "Niveau Boss". **ComfyUI** est une interface nodale. Au lieu de simples boutons, vous voyez la "tuyauterie" réelle de l'IA.
 
 ---
 
-## 🧩 Challenge: Connect the Dots
+## 🏗️ Anatomie d'un Flux de Travail (Workflow)
 
-Below is a diagram of a standard workflow, but the **connections are missing**. 
+Dans ComfyUI, chaque action est un "Nœud". Pour créer une image, les données doivent circuler du modèle à travers plusieurs étapes jusqu'à devenir des pixels.
 
-### The Puzzle
-Imagine you are looking at your screen. You have these five nodes, but they aren't talking to each other. **Can you figure out where the wires go?**
+### Les Blocs de Base :
+1.  **Load Checkpoint :** Charge le modèle d'IA.
+2.  **CLIP Text Encode :** Transforme votre texte en nombres compréhensibles par l'IA.
+3.  **Empty Latent Image :** Crée le "canevas vide" de bruit.
+4.  **KSampler :** Le moteur qui effectue le débruitage.
+5.  **VAE Decode :** Convertit le résultat des "maths" (Latent) en "pixels" (Image).
+
+---
+
+## 🧩 Défi : Reliez les Points
+
+Ci-dessous se trouve un diagramme d'un workflow standard, mais les **connexions sont manquantes**.
+
+### L'Énigme
+Imaginez que vous regardez votre écran. Vous avez ces cinq nœuds, mais ils ne communiquent pas entre eux. **Pouvez-vous deviner où vont les câbles ?**
 
 ```mermaid
 graph LR
@@ -35,7 +35,7 @@ graph LR
         F[Save Image]
     end
 
-    %% Missing Connections visual representation
+    %% Représentation visuelle des connexions manquantes
     A -. ? .-> D
     B -. ? .-> D
     C -. ? .-> D
@@ -44,28 +44,28 @@ graph LR
     E -. ? .-> F
 ```
 
-### 📝 Your Task:
-Open ComfyUI and try to recreate this. Here is the logic you need to follow:
-1.  The **MODEL** output from "Load Checkpoint" needs to go into the KSampler.
-2.  The **CONDITIONING** output from your Prompt needs to go into the "positive" slot of the KSampler.
-3.  The **LATENT** output from "Empty Latent" provides the starting noise for the KSampler.
-4.  The **LATENT** result from the KSampler must be **DECODED** by the VAE.
-5.  The **VAE** itself comes from the "Load Checkpoint" node!
+### 📝 Votre Mission :
+Ouvrez ComfyUI et essayez de recréer ceci. Voici la logique à suivre :
+1.  La sortie **MODEL** du nœud "Load Checkpoint" doit aller dans le KSampler.
+2.  La sortie **CONDITIONING** de votre Prompt doit aller dans l'entrée "positive" du KSampler.
+3.  La sortie **LATENT** de "Empty Latent" fournit le bruit de départ au KSampler.
+4.  Le résultat **LATENT** du KSampler doit être **DÉCODÉ** par le VAE.
+5.  Le **VAE** lui-même provient du nœud "Load Checkpoint" !
 
-!!! warning "Common Mistake"
-    Forget to connect the **VAE** from the "Load Checkpoint" to the "VAE Decode" node, and you'll get an error. The AI needs that specific VAE to "translate" the latent space back to colors!
-
----
-
-## 🎯 Final Goal
-Once you connect these correctly, press **"Queue Prompt"**. If a beautiful image pops out of the "Save Image" node, you've successfully built your first AI engine!
+!!! warning "Erreur Courante"
+    Oublier de connecter le **VAE** du nœud "Load Checkpoint" vers le nœud "VAE Decode" provoquera une erreur. L'IA a besoin de ce VAE spécifique pour "traduire" l'espace latent en couleurs !
 
 ---
 
-## 📚 Summary
-You've learned:
-- How Diffusion works (Denoising).
-- How to use a simple UI (LightDiffusion-Next).
-- How to build a custom engine (ComfyUI).
+## 🎯 Objectif Final
+Une fois que vous avez tout connecté correctement, appuyez sur **"Queue Prompt"**. Si une magnifique image sort du nœud "Save Image", vous avez réussi à construire votre premier moteur d'IA !
 
-**Happy generating!**
+---
+
+## 📚 Résumé
+Vous avez appris :
+- Comment fonctionne la Diffusion (Débruitage).
+- Comment utiliser une interface simple (LightDiffusion-Next).
+- Comment construire un moteur personnalisé (ComfyUI).
+
+**Bonne génération !**

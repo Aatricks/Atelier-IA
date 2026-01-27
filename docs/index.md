@@ -1,38 +1,38 @@
-# Welcome to the AI Diffusion Workshop
+# Bienvenue à l'Atelier IA - Guide Diffusion
 
-Explore the fascinating world of AI-generated imagery. This guide will take you from the core concepts of Diffusion to mastering advanced node-based workflows.
-
----
-
-## 🎨 What is AI Diffusion?
-
-At its heart, **Diffusion** is a mathematical process that learns to turn chaos into order. Imagine taking a clear photo and slowly adding "salt and pepper" noise until it's completely unrecognizable. Then, imagine teaching an AI to look at that noise and *guess* how to remove it to find the image underneath.
-
-### 1. The Forward Process (Adding Noise)
-In the forward process, we take a real image and incrementally add Gaussian noise. By the end, the image is just a static-filled canvas. 
-
-![Diagram: Forward Diffusion Process - Image turning into noise](images/forward_diffusion.png)
-*Visualizing the transformation from a clear image to pure noise.*
-
-### 2. The Reverse Process (Denoising)
-This is where the magic happens. The AI (specifically a **U-Net** or **Transformer**) is trained to predict the noise added at each step. By subtracting this predicted noise, the AI "hallucinates" details from the static.
-
-![GIF: Denoising process - Image emerging from static](images/denoising_process.gif)
-*Watch as the AI carves a specific image out of random noise.*
-
-### 3. Latent Diffusion (LDM)
-Modern tools like **Stable Diffusion** don't work on the full resolution of pixels (which is computationally expensive). Instead, they work in a compressed "Latent Space."
-- **VAE (Variational AutoEncoder):** Compresses the image into a smaller mathematical representation (Latent) and decodes it back to pixels later.
-- **The Prompt:** Acts as a "guide" or "magnet," pulling the denoising process towards a specific concept (e.g., "a cat wearing a hat").
-
-!!! info "Key Concept: The Latent Space"
-    Think of Latent Space as a "conceptual map" where similar things are grouped together. "Dogs" are in one neighborhood, "Vibrant Sunsets" are in another. The AI navigates this map to find the exact image you described.
+Explorez le monde fascinant de la création d'images par IA. Ce guide vous accompagnera des concepts fondamentaux de la Diffusion jusqu'à la maîtrise des flux de travail avancés basés sur les nœuds.
 
 ---
 
-## 🚀 Getting Started
-In the next chapters, we will:
-1.  **Generate your first images** using the streamlined **LightDiffusion-Next** interface.
-2.  **Master the nodes** with **ComfyUI**, where you'll learn to build your own generation engine.
+## 🎨 Qu'est-ce que la Diffusion IA ?
 
-[Next: LightDiffusion-Next Guide &rarr;](light-diffusion.md)
+Au cœur de tout cela, la **Diffusion** est un processus mathématique qui apprend à transformer le chaos en ordre. Imaginez une photo nette sur laquelle on ajoute progressivement du bruit "poivre et sel" jusqu'à ce qu'elle soit méconnaissable. Ensuite, imaginez apprendre à une IA à regarder ce bruit et à *deviner* comment l'enlever pour retrouver l'image cachée en dessous.
+
+### 1. Le Processus Direct (Ajout de Bruit)
+Dans le processus direct, nous prenons une image réelle et ajoutons du bruit gaussien par étapes. À la fin, l'image n'est plus qu'un canevas rempli de parasites.
+
+![Diagramme : Processus de Diffusion Directe - Image se transformant en bruit](images/forward_diffusion.png)
+*Visualisation de la transformation d'une image nette en bruit pur.*
+
+### 2. Le Processus Inverse (Débruitage)
+C'est ici que la magie opère. L'IA (plus précisément un **U-Net** ou un **Transformer**) est entraînée à prédire le bruit ajouté à chaque étape. En soustrayant ce bruit prédit, l'IA "hallucine" des détails à partir du statique.
+
+![GIF : Processus de débruitage - Image émergeant du statique](images/denoising_process.gif)
+*Regardez comment l'IA sculpte une image spécifique à partir d'un bruit aléatoire.*
+
+### 3. Diffusion Latente (LDM)
+Les outils modernes comme **Stable Diffusion** ne travaillent pas sur la résolution complète des pixels (ce qui serait trop lourd). Ils travaillent dans un "Espace Latent" compressé.
+- **VAE (Variational AutoEncoder) :** Compresse l'image en une représentation mathématique plus petite (Latent) et la décode en pixels plus tard.
+- **Le Prompt (Invite) :** Agit comme un "guide" ou un "aimant", attirant le processus de débruitage vers un concept spécifique (ex: "un chat portant un chapeau").
+
+!!! info "Concept Clé : L'Espace Latent"
+    Pensez à l'Espace Latent comme à une "carte conceptuelle" où les choses similaires sont regroupées. Les "chiens" sont dans un quartier, les "couchers de soleil vibrants" dans un autre. L'IA navigue sur cette carte pour trouver l'image exacte que vous avez décrite.
+
+---
+
+## 🚀 Pour Commencer
+Dans les chapitres suivants, nous allons :
+1.  **Générer vos premières images** via l'interface simplifiée **LightDiffusion-Next**.
+2.  **Maîtriser les nœuds** avec **ComfyUI**, où vous apprendrez à construire votre propre moteur de génération.
+
+[Suivant : Guide LightDiffusion-Next &rarr;](light-diffusion.md)

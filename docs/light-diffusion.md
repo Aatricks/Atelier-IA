@@ -1,46 +1,46 @@
-# LightDiffusion-Next: The Simple Start
+# LightDiffusion-Next : Débuter Simplement
 
-Before diving into complex node graphs, let's start with a streamlined experience. **LightDiffusion-Next** is designed to be fast, efficient, and unintimidating.
-
----
-
-## 🕹️ The Interface at a Glance
-
-LightDiffusion-Next focuses on the "Big Three" of image generation:
-1.  **The Prompt:** What you want to see.
-2.  **The Negative Prompt:** What you *don't* want to see (e.g., "blurry, low quality").
-3.  **The Model (Checkpoint):** The "brain" of the AI (SDXL, SD1.5, etc.).
-
-![Screenshot: LightDiffusion-Next UI Layout](images/ld_ui_layout.png)
+Avant de plonger dans des graphes de nœuds complexes, commençons par une expérience simplifiée. **LightDiffusion-Next** est conçu pour être rapide, efficace et accessible.
 
 ---
 
-## 🛠️ Your First Generation
+## 🕹️ L'Interface en un Coup d'Œil
 
-Follow these steps to create your first masterpiece:
+LightDiffusion-Next se concentre sur les "Trois Piliers" de la génération d'images :
+1.  **Le Prompt :** Ce que vous voulez voir.
+2.  **Le Prompt Négatif :** Ce que vous *ne voulez pas* voir (ex: "flou, mauvaise qualité").
+3.  **Le Modèle (Checkpoint) :** Le "cerveau" de l'IA (SDXL, SD1.5, etc.).
 
-### 1. Set the Prompt
-Type a descriptive prompt. Use commas to separate concepts.
-- **Example:** `A futuristic cyberpunk city, neon lights, rain-slicked streets, cinematic lighting, 8k resolution`
-
-### 2. Choose Your Settings
-- **Sampling Steps:** 20-30 is usually perfect. Too few and it's blurry; too many and it takes forever.
-- **CFG Scale:** Usually between 5 and 8. This controls how strictly the AI follows your prompt.
-- **Resolution:** Start with `512x512` (for SD1.5) or `1024x1024` (for SDXL).
-
-### 3. Click "Generate"
-Wait a few seconds. Thanks to optimizations like `Stable-Fast`, you'll see your image appear almost instantly!
+![Capture d'écran : Disposition de l'interface LightDiffusion-Next](images/ld_ui_layout.png)
 
 ---
 
-## 💡 Pro Tips for Beginners
-- **Keyword Weighting:** In many UIs, you can use `(keyword:1.2)` to make it more important.
-- **Aspect Ratios:** Try `768x512` for landscapes or `512x768` for portraits.
-- **Styles:** Don't be afraid to add style keywords like "Studio Ghibli," "Cyberpunk," or "Oil Painting."
+## 🛠️ Votre Première Génération
 
-!!! tip "Try This!"
-    Generate an image of "A cozy cabin in the woods during autumn." Then, try adding "snowing" to the prompt and see how the AI adapts the entire scene!
+Suivez ces étapes pour créer votre premier chef-d'œuvre :
+
+### 1. Rédiger le Prompt
+Tapez une description précise. Utilisez des virgules pour séparer les concepts.
+- **Exemple :** `Une ville cyberpunk futuriste, néons, rues mouillées par la pluie, éclairage cinématographique, résolution 8k`
+
+### 2. Choisir vos Réglages
+- **Sampling Steps (Étapes) :** 20 à 30 est généralement parfait. Trop peu et l'image sera floue ; trop et cela prendra du temps inutilement.
+- **CFG Scale :** Généralement entre 5 et 8. Cela contrôle la fidélité de l'IA par rapport à votre texte.
+- **Résolution :** Commencez par `512x512` (pour SD1.5) ou `1024x1024` (pour SDXL).
+
+### 3. Cliquez sur "Générer"
+Attendez quelques secondes. Grâce aux optimisations comme `Stable-Fast`, vous verrez votre image apparaître presque instantanément !
 
 ---
 
-[Next: Advanced Nodes with ComfyUI &rarr;](comfyui.md)
+## 💡 Astuces pour Débutants
+- **Poids des mots-clés :** Dans la plupart des interfaces, vous pouvez utiliser `(mot-clé:1.2)` pour lui donner plus d'importance.
+- **Formats d'image :** Essayez `768x512` pour des paysages ou `512x768` pour des portraits.
+- **Styles :** N'hésitez pas à ajouter des styles comme "Studio Ghibli", "Cyberpunk" ou "Peinture à l'huile".
+
+!!! tip "Essayez ceci !"
+    Générez une image de "Un chalet confortable dans les bois en automne". Ensuite, essayez d'ajouter "sous la neige" au prompt et regardez comment l'IA adapte toute la scène !
+
+---
+
+[Suivant : Nœuds avancés avec ComfyUI &rarr;](comfyui.md)

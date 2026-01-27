@@ -1,4 +1,4 @@
-site_name: Atelier IA - Diffusion Guide
+site_name: Atelier IA - Guide Diffusion
 theme:
   name: shadcn
   custom_dir: docs/overrides
