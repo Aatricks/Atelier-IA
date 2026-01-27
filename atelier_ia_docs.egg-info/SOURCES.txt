@@ -1,0 +1,6 @@
+pyproject.toml
+atelier_ia_docs.egg-info/PKG-INFO
+atelier_ia_docs.egg-info/SOURCES.txt
+atelier_ia_docs.egg-info/dependency_links.txt
+atelier_ia_docs.egg-info/requires.txt
+atelier_ia_docs.egg-info/top_level.txt

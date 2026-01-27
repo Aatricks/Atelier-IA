@@ -1,0 +1,22 @@
+[project]
+name = "atelier-ia-docs"
+version = "0.1.0"
+description = "A guide for ComfyUI and Diffusion"
+requires-python = ">=3.12"
+authors = [
+    { name = "Aatricks", email = "aatricks@example.com" }
+]
+dependencies = [
+    "mkdocs>=1.5.0",
+    "mkdocs-shadcn>=0.3.0",
+    "mkdocs-material>=9.5.0",
+    "pymdown-extensions>=10.0",
+    "mkdocs-static-i18n>=1.2.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = []
