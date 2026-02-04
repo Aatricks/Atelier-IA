@@ -1,7 +1,13 @@
-site_name: Atelier IA - Guide Diffusion
+site_name: "Atelier IA - Guide Diffusion"
+
+repo_url: "https://github.com/Aatricks/Atelier-IA"
+repo_name: "Atelier IA"
+site_description: "A comprehensive guide to diffusion models and their applications."
+site_author: "Aatricks"
 theme:
   name: shadcn
   custom_dir: docs/overrides
+  icon: null
   features:
     - navigation.tabs
     - navigation.sections
@@ -35,3 +41,6 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid/dist/mermaid.min.js

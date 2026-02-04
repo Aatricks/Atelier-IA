@@ -9,6 +9,7 @@ La majorité des outils d'IA génératrice d'images (Midjourney, ChatGPT, DALL-E
 La génération d'images par diffusion repose sur un processus de réduction du bruit. Contrairement à une croyance commune, l'IA ne "dessine" pas ; elle sculpte une information à partir d'un chaos statistique.
 
 !!! info "Le concept de débruitage"
+
     Le processus commence par un bruit gaussien pur (une image composée de pixels aléatoires). L'IA, entraînée sur des millions d'exemples, prédit à chaque étape la quantité de bruit à retirer pour se rapprocher d'un concept connu.
     
     ![Processus de débruitage](images/denoising_process.webp)
@@ -21,12 +22,15 @@ La génération d'images par diffusion repose sur un processus de réduction du 
 Pour manipuler ces modèles, il est essentiel de comprendre trois composants techniques :
 
 !!! abstract "1. L'Espace Latent"
+
     Travailler sur des images en haute résolution pixel par pixel est coûteux en ressources. La diffusion s'effectue donc dans un **espace latent**, une version compressée et mathématique de l'image. Le **VAE (Variational AutoEncoder)** est le composant chargé de la compression et de la décompression de ces données.
 
 !!! abstract "2. Le Guidage (Conditioning)"
+
     Le texte que vous saisissez (le prompt) est converti par un encodeur de texte (**CLIP**) en vecteurs mathématiques. Ces vecteurs agissent comme des contraintes qui orientent le processus de débruitage vers un résultat spécifique.
 
 !!! abstract "3. Le Planificateur (Scheduler)"
+
     Le scheduler détermine la vitesse et la méthode de retrait du bruit. C'est lui qui définit la trajectoire mathématique que prendra l'IA pour passer du bruit pur à l'image finale.
 
 ---
