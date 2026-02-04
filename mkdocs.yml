@@ -2,6 +2,8 @@ site_name: "Atelier IA - Guide Diffusion"
 
 repo_url: "https://github.com/Aatricks/Atelier-IA"
 repo_name: "Atelier IA"
+use_directory_urls: false
+site_url: "https://aatricks.github.io/Atelier-IA"
 site_description: "A comprehensive guide to diffusion models and their applications."
 site_author: "Aatricks"
 theme:
