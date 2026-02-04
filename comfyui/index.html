@@ -193,7 +193,7 @@
                 </div>
                 <a target="_blank" rel="noreferrer" data-slot="button"
                     class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 h-8 shadow-none"
-                    href="None">
+                    href="https://github.com/Aatricks/Atelier-IA">
                     <svg viewBox="0 0 438.549 438.549">
                         <path fill="currentColor"
                             d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z">
@@ -397,65 +397,76 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>Bienvenue au "Niveau Boss". <strong>ComfyUI</strong> est une interface nodale. Au lieu de simples boutons, vous voyez la "tuyauterie" réelle de l'IA.</p>
+    <p>ComfyUI est une interface basée sur des graphes de nœuds. Elle permet de visualiser et de manipuler directement le flux de données (workflow). Cette approche est indispensable pour comprendre comment les composants communiquent entre eux.</p>
 <hr />
-<h2 id="anatomie-dun-flux-de-travail-workflow">🏗️ Anatomie d'un Flux de Travail (Workflow)</h2>
-<p>Dans ComfyUI, chaque action est un "Nœud". Pour créer une image, les données doivent circuler du modèle à travers plusieurs étapes jusqu'à devenir des pixels.</p>
-<h3 id="les-blocs-de-base">Les Blocs de Base :</h3>
-<ol>
-<li><strong>Load Checkpoint :</strong> Charge le modèle d'IA.</li>
-<li><strong>CLIP Text Encode :</strong> Transforme votre texte en nombres compréhensibles par l'IA.</li>
-<li><strong>Empty Latent Image :</strong> Crée le "canevas vide" de bruit.</li>
-<li><strong>KSampler :</strong> Le moteur qui effectue le débruitage.</li>
-<li><strong>VAE Decode :</strong> Convertit le résultat des "maths" (Latent) en "pixels" (Image).</li>
-</ol>
+<h2 id="terminologie-technique">Terminologie technique</h2>
+<ul>
+<li><strong>Nœud (Node) :</strong> Unité de traitement effectuant une opération spécifique (encodage, échantillonnage, décodage).</li>
+<li><strong>Liaison (Noodle/Edge) :</strong> Connexion transportant un type de donnée spécifique (Model, Clip, Latent, VAE).</li>
+<li><strong>Workflow :</strong> L'ensemble du graphe constituant la pipeline de génération.</li>
+</ul>
 <hr />
-<h2 id="defi-reliez-les-points">🧩 Défi : Reliez les Points</h2>
-<p>Ci-dessous se trouve un diagramme d'un workflow standard, mais les <strong>connexions sont manquantes</strong>.</p>
-<h3 id="lenigme">L'Énigme</h3>
-<p>Imaginez que vous regardez votre écran. Vous avez ces cinq nœuds, mais ils ne communiquent pas entre eux. <strong>Pouvez-vous deviner où vont les câbles ?</strong></p>
-<div class="mermaid">graph LR
-    subgraph Nodes
-        A[Load Checkpoint]
-        B[CLIP Text Encode - Prompt]
-        C[Empty Latent Image]
-        D[KSampler]
-        E[VAE Decode]
-        F[Save Image]
-    end
-
-    %% Représentation visuelle des connexions manquantes
-    A -. ? .-&gt; D
-    B -. ? .-&gt; D
-    C -. ? .-&gt; D
-    D -. ? .-&gt; E
-    A -. ? .-&gt; E
-    E -. ? .-&gt; F</div>
-<h3 id="votre-mission">📝 Votre Mission :</h3>
-<p>Ouvrez ComfyUI et essayez de recréer ceci. Voici la logique à suivre :
-1.  La sortie <strong>MODEL</strong> du nœud "Load Checkpoint" doit aller dans le KSampler.
-2.  La sortie <strong>CONDITIONING</strong> de votre Prompt doit aller dans l'entrée "positive" du KSampler.
-3.  La sortie <strong>LATENT</strong> de "Empty Latent" fournit le bruit de départ au KSampler.
-4.  Le résultat <strong>LATENT</strong> du KSampler doit être <strong>DÉCODÉ</strong> par le VAE.
-5.  Le <strong>VAE</strong> lui-même provient du nœud "Load Checkpoint" !</p>
+<h2 id="les-composants-du-workflow-standard">Les composants du workflow standard</h2>
+<div class="admonition info">
+<p class="admonition-title">1. Load Checkpoint</p>
+<p>C'est le point d'entrée qui charge les poids du modèle. Il distribue les données vers trois flux :</p>
+<ul>
+<li><strong>MODEL :</strong> Transmis au KSampler.</li>
+<li><strong>CLIP :</strong> Transmis aux encodeurs de texte.</li>
+<li><strong>VAE :</strong> Transmis au décodeur final.</li>
+</ul>
+<p><img alt="Nœud Load Checkpoint" src="../images/ComfyUI/Checkpoint_loader.png" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">2. CLIP Text Encode</p>
+<p>Transforme le texte brut en données compréhensibles par le modèle. Ces données servent de "guide" (Conditioning) au processus de débruitage.</p>
+<p><img alt="Nœud CLIP Text Encode" src="../images/ComfyUI/Text_encoders.png" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">3. Empty Latent Image</p>
+<p>Définit les dimensions de sortie et génère le bruit initial dans l'espace latent. L'image n'existe pas encore sous forme de pixels à cette étape.</p>
+<p><img alt="Nœud Empty Latent Image" src="../images/ComfyUI/Empty_latent.png" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">4. KSampler</p>
+<p>Le moteur de calcul. Il reçoit le modèle, les prompts (positif/négatif) et le bruit latent. Il effectue les itérations de débruitage demandées.</p>
+<p><img alt="Nœud KSampler" src="../images/ComfyUI/KSampler.png" /></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">5. VAE Decode</p>
+<p>Prend les données mathématiques en sortie du KSampler et utilise le module VAE pour les traduire en pixels affichables.</p>
+<p><img alt="Nœud VAE Decode" src="../images/ComfyUI/VAE_decode.png" /></p>
+</div>
+<hr />
+<h2 id="exercice-reconstitution-du-flux">Exercice : Reconstitution du flux</h2>
 <div class="admonition warning">
-<p class="admonition-title">Erreur Courante</p>
-<p>Oublier de connecter le <strong>VAE</strong> du nœud "Load Checkpoint" vers le nœud "VAE Decode" provoquera une erreur. L'IA a besoin de ce VAE spécifique pour "traduire" l'espace latent en couleurs !</p>
+<p class="admonition-title">Objectif du module</p>
+<p>Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les liaisons sont rompues. Vous devez reconnecter les flux en respectant la logique de transport des données.</p>
 </div>
+<div class="mermaid">graph LR
+    CP[Load Checkpoint] --- TE[CLIP Text Encode]
+    CP --- KS[KSampler]
+    CP --- VD[VAE Decode]
+    TE --- KS
+    EL[Empty Latent] --- KS
+    KS --- VD
+    VD --- SI[Save Image]</div>
+<details class="success">
+<summary>Voir la solution (Workflow complet)</summary>
+<p>N'ouvrez ce bloc que si vous êtes bloqué ou pour vérifier votre travail.</p>
+<p><img alt="Workflow complet ComfyUI" src="../images/ComfyUI/full_workflow.png" /></p>
+</details>
 <div class="admonition tip">
-<p class="admonition-title">Astuce de Pro : Le bruit n'est pas votre ennemi</p>
-<p>Dans le nœud <strong>Empty Latent Image</strong>, essayez de changer la taille à <code>64x64</code> tout en gardant une sortie finale en <code>512x512</code>. Vous verrez l'IA essayer de transformer de gros blocs de couleur en objets détaillés. C'est le secret pour créer des compositions artistiques abstraites !</p>
+<p class="admonition-title">Raccourcis d'interface</p>
+<ul>
+<li><strong>Double-clic :</strong> Ouverture de la recherche rapide de nœuds.</li>
+<li><strong>Clic droit sur une entrée :</strong> Permet de convertir un paramètre (ex: seed) en entrée connectable.</li>
+<li><strong>Glisser-déposer depuis un port :</strong> Propose automatiquement les nœuds compatibles avec le type de donnée.</li>
+</ul>
 </div>
 <hr />
-<h2 id="objectif-final">🎯 Objectif Final</h2>
-<p>Une fois que vous avez tout connecté correctement, appuyez sur <strong>"Queue Prompt"</strong>. Si une magnifique image sort du nœud "Save Image", vous avez réussi à construire votre premier moteur d'IA !</p>
-<hr />
-<h2 id="resume">📚 Résumé</h2>
-<p>Vous avez appris :
-- Comment fonctionne la Diffusion (Débruitage).
-- Comment utiliser une interface simple (LightDiffusion-Next).
-- Comment construire un moteur personnalisé (ComfyUI).</p>
-<p><strong>Bonne génération !</strong></p>
+<h2 id="synthese-de-latelier">Synthèse de l'atelier</h2>
+<p>À l'issue de ces modules, vous devriez être en mesure d'identifier chaque étape de la création d'une image : de l'intention textuelle au traitement mathématique dans l'espace latent, jusqu'au décodage final.</p>
   </div>
 </article>
                                 <div class="mx-auto flex flex-wrap h-16 w-full max-w-2xl items-center gap-2 px-4 md:px-0">
@@ -530,56 +541,34 @@
         
         
         
-        <a href="#anatomie-dun-flux-de-travail-workflow"
+        <a href="#terminologie-technique"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            🏗️ Anatomie d'un Flux de Travail (Workflow)
-        </a>
-        
-        
-        <a href="#les-blocs-de-base"
-            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
-            data-active="false" data-depth="3">
-            Les Blocs de Base :
-        </a>
-        
-        
-
-        
-        <a href="#defi-reliez-les-points"
-            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
-            data-active="false" data-depth="2">
-            🧩 Défi : Reliez les Points
-        </a>
-        
-        
-        <a href="#lenigme"
-            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
-            data-active="false" data-depth="3">
-            L'Énigme
-        </a>
-        
-        <a href="#votre-mission"
-            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
-            data-active="false" data-depth="3">
-            📝 Votre Mission :
-        </a>
-        
-        
-
-        
-        <a href="#objectif-final"
-            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
-            data-active="false" data-depth="2">
-            🎯 Objectif Final
+            Terminologie technique
         </a>
         
 
         
-        <a href="#resume"
+        <a href="#les-composants-du-workflow-standard"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            📚 Résumé
+            Les composants du workflow standard
+        </a>
+        
+
+        
+        <a href="#exercice-reconstitution-du-flux"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="2">
+            Exercice : Reconstitution du flux
+        </a>
+        
+
+        
+        <a href="#synthese-de-latelier"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="2">
+            Synthèse de l'atelier
         </a>
         
 
@@ -603,6 +592,8 @@
         <div class="flex h-(--footer-height) items-center justify-between">
             <div class="text-muted-foreground w-full text-center text-xs leading-loose sm:text-sm">
                 
+                Built by<!-- --> <span>Aatricks</span> &mdash;
+                
                 <a href="https://github.com/asiffer/mkdocs-shadcn">shadcn theme</a> provided by
                 <a href="https://github.com/asiffer">@asiffer</a>
             </div>
@@ -610,6 +601,10 @@
     </div>
 </footer>
     </div>
+     
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+
      
 
 <script src="../search/main.js"></script>
@@ -620,7 +615,7 @@
     <script src="../js/copy-button.js"></script>
     <script>updatePygmentsStylesheet();</script>
     
-    <script>fetchStargazers("None");</script>
+    <script>fetchStargazers("https://github.com/Aatricks/Atelier-IA");</script>
     
     
     

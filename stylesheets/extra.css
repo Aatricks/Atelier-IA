@@ -1,10 +1,6 @@
 /* Custom styles for Atelier IA */
 
-:root {
-    --primary: #000000;
-    --secondary: #f4f4f5;
-}
-
+/* Images */
 .md-content img {
     border-radius: 8px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -13,14 +9,18 @@
     max-width: 800px;
 }
 
+/* Admonitions */
 .md-typeset .admonition {
     border-radius: 8px;
     border-left-width: 4px;
 }
 
+/* Mermaid */
 .mermaid {
-    background: white;
+    background: #ffffff;
     padding: 20px;
     border-radius: 8px;
     margin: 1em 0;
+    display: block;
+    text-align: center;
 }

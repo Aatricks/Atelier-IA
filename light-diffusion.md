@@ -1,60 +1,63 @@
-# LightDiffusion-Next : Débuter Simplement
+# Module 1 : Validation des concepts de base
 
-Avant de plonger dans des graphes de nœuds complexes, commençons par une expérience simplifiée. **LightDiffusion-Next** est conçu pour être rapide, efficace et accessible.
-
----
-
-## 🕹️ L'Interface en un Coup d'Œil
-
-LightDiffusion-Next se concentre sur les "Trois Piliers" de la génération d'images :
-1.  **Le Prompt :** Ce que vous voulez voir.
-2.  **Le Prompt Négatif :** Ce que vous *ne voulez pas* voir (ex: "flou, mauvaise qualité").
-3.  **Le Modèle (Checkpoint) :** Le "cerveau" de l'IA (SDXL, SD1.5, etc.).
-
-![Capture d'écran : Disposition de l'interface LightDiffusion-Next](images/ld_ui_layout.png)
+Cette première phase utilise l'interface **LightDiffusion-Next**. L'objectif est de valider les connaissances théoriques en observant l'impact direct des paramètres de génération sur une interface épurée.
 
 ---
 
-## 🛠️ Votre Première Génération
+## Paramètres de contrôle
 
-Suivez ces étapes pour créer votre premier chef-d'œuvre :
+Trois variables fondamentales permettent de piloter la génération.
 
-### 1. Rédiger le Prompt
-Tapez une description précise. Utilisez des virgules pour séparer les concepts.
-- **Exemple :** `Une ville cyberpunk futuriste, néons, rues mouillées par la pluie, éclairage cinématographique, résolution 8k`
+!!! success "Le Prompt (Conditioning)"
 
-### 2. Choisir vos Réglages
-- **Sampling Steps (Étapes) :** 20 à 30 est généralement parfait. Trop peu et l'image sera floue ; trop et cela prendra du temps inutilement.
-- **CFG Scale :** Généralement entre 5 et 8. Cela contrôle la fidélité de l'IA par rapport à votre texte.
-- **Résolution :** Commencez par `512x512` (pour SD1.5) ou `1024x1024` (pour SDXL).
+    C'est la directive textuelle. L'IA interprète vos mots pour orienter le débruitage.
 
-### 3. Cliquez sur "Générer"
-Attendez quelques secondes. Grâce aux optimisations comme `Stable-Fast`, vous verrez votre image apparaître presque instantanément !
+    *   **Positif :** Les éléments à inclure.
+    *   **Négatif :** Les éléments ou styles à exclure explicitement.
+    
+    ![Interface des Prompts](images/LDN/Prompts.png)
+
+!!! success "Le Sampling (Steps)"
+
+    Le nombre d'itérations que l'IA effectue pour retirer le bruit. 
+
+    *   **Observation :** Un nombre trop faible (ex: 10) laisse l'image inachevée. Un nombre trop élevé (ex: 50) s'avère souvent inefficace passé un certain point de convergence.
+    
+    ![Réglages de Sampling](images/LDN/Sampling.png)
+
+!!! success "La Seed (Déterminisme)"
+
+    La Seed est la valeur numérique qui initialise le bruit de départ. 
+
+    *   **Fixe :** Permet de reproduire exactement la même image ou de tester l'influence d'un changement de texte sur une base identique.
+    *   **Aléatoire (-1) :** Produit un nouveau point de départ à chaque génération.
+
+!!! success "Le CFG Scale (Fidélité au Prompt)"
+
+    Le **Classifier Free Guidance** contrôle l'équilibre entre la créativité de l'IA et le respect strict de vos instructions.
+
+    *   **Valeur basse (1-3) :** L'IA est très libre, les couleurs sont souvent délavées et le prompt est peu suivi.
+    *   **Valeur standard (7-9) :** Le compromis idéal pour la plupart des modèles.
+    *   **Valeur haute (15+) :** L'IA force les traits, les contrastes deviennent extrêmes ("deep fried") et des artefacts peuvent apparaître.
+
+!!! success "Le Sampler (Méthode de calcul)"
+
+    C'est l'algorithme qui choisit comment retirer le bruit. Certains convergent très vite (Euler a, UniPC), d'autres demandent plus de temps mais offrent une texture plus fine (DPM++ 2M SDE).
 
 ---
 
-## 💡 Astuces pour Débutants
-- **Poids des mots-clés :** Dans la plupart des interfaces, vous pouvez utiliser `(mot-clé:1.2)` pour lui donner plus d'importance.
-- **Formats d'image :** Essayez `768x512` pour des paysages ou `512x768` pour des portraits.
-- **Styles :** N'hésitez pas à ajouter des styles comme "Studio Ghibli", "Cyberpunk" ou "Peinture à l'huile".
+## Exercices d'application
 
-!!! tip "Essayez ceci !"
-    Générez une image de "Un chalet confortable dans les bois en automne". Ensuite, essayez d'ajouter "sous la neige" au prompt et regardez comment l'IA adapte toute la scène !
+!!! note "Consignes de test"
 
----
-
-## 🧪 Le Labo du Savant Fou (Expériences "Stupides")
-
-N'ayez pas peur de casser les réglages ! C'est comme ça qu'on comprend comment l'IA réfléchit.
-
-!!! abstract "Défi : Le CFG de l'enfer"
-    - **CFG à 1.0 :** L'IA ignore presque totalement votre texte. Elle devient "paresseuse" et génère des formes vagues et délavées. C'est l'anarchie créative.
-    - **CFG à 30.0 :** On appelle ça l'effet "Deep Fried". L'IA essaie tellement fort de suivre vos ordres que les couleurs brûlent et les détails deviennent grotesques.
-
-!!! info "La course aux Steps"
-    - **1 Step :** Vous obtiendrez une bouillie de pixels colorés. C'est le "premier jet" brut de l'imagination de l'IA.
-    - **100 Steps :** C'est souvent une perte de temps. L'IA va passer des minutes à polir des détails que l'œil humain ne verra même pas, et peut même introduire des artefacts bizarres.
+    Pour chaque exercice, utilisez un modèle (checkpoint) de type SDXL ou SD1.5 disponible dans le sélecteur.
+    
+    1.  **Stabilité :** Générez une image, notez sa Seed, puis relancez la génération. Observez la reproduction identique.
+    2.  **Variabilité :** Modifiez un seul adjectif dans votre prompt tout en conservant la même Seed. Analysez comment l'IA adapte la structure existante au nouveau concept.
+    3.  **L'effet CFG :** Avec une Seed fixe, comparez une génération à CFG 1.0, 7.0 et 30.0. Observez la dégradation de l'image aux extrêmes.
+    4.  **Comparaison de Samplers :** Testez le même prompt et la même Seed avec `Euler a` puis avec `DPM++ 2M Karras`. Notez les différences de détails, notamment sur les textures complexes.
+    5.  **Convergence :** Observez la différence de netteté entre 15 et 30 steps sur un même prompt.
 
 ---
 
-[Suivant : Nœuds avancés avec ComfyUI &rarr;](comfyui.md)
+[Accéder au Module 2 : Architecture nodale (ComfyUI) &rarr;](comfyui.md)
