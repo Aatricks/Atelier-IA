@@ -1,38 +1,41 @@
-# Bienvenue à l'Atelier IA - Guide Diffusion
+# Atelier : Architecture de la Diffusion
 
-Explorez le monde fascinant de la création d'images par IA. Ce guide vous accompagnera des concepts fondamentaux de la Diffusion jusqu'à la maîtrise des flux de travail avancés basés sur les nœuds.
-
----
-
-## 🎨 Qu'est-ce que la Diffusion IA ?
-
-Au cœur de tout cela, la **Diffusion** est un processus mathématique qui apprend à transformer le chaos en ordre. Imaginez une photo nette sur laquelle on ajoute progressivement du bruit "poivre et sel" jusqu'à ce qu'elle soit méconnaissable. Ensuite, imaginez apprendre à une IA à regarder ce bruit et à *deviner* comment l'enlever pour retrouver l'image cachée en dessous.
-
-### 1. Le Processus Direct (Ajout de Bruit)
-Dans le processus direct, nous prenons une image réelle et ajoutons du bruit gaussien par étapes. À la fin, l'image n'est plus qu'un canevas rempli de parasites.
-
-![Diagramme : Processus de Diffusion Directe - Image se transformant en bruit](images/forward_diffusion.png)
-*Visualisation de la transformation d'une image nette en bruit pur.*
-
-### 2. Le Processus Inverse (Débruitage)
-C'est ici que la magie opère. L'IA (plus précisément un **U-Net** ou un **Transformer**) est entraînée à prédire le bruit ajouté à chaque étape. En soustrayant ce bruit prédit, l'IA "hallucine" des détails à partir du statique.
-
-![GIF : Processus de débruitage - Image émergeant du statique](images/denoising_process.gif)
-*Regardez comment l'IA sculpte une image spécifique à partir d'un bruit aléatoire.*
-
-### 3. Diffusion Latente (LDM)
-Les outils modernes comme **Stable Diffusion** ne travaillent pas sur la résolution complète des pixels (ce qui serait trop lourd). Ils travaillent dans un "Espace Latent" compressé.
-- **VAE (Variational AutoEncoder) :** Compresse l'image en une représentation mathématique plus petite (Latent) et la décode en pixels plus tard.
-- **Le Prompt (Invite) :** Agit comme un "guide" ou un "aimant", attirant le processus de débruitage vers un concept spécifique (ex: "un chat portant un chapeau").
-
-!!! info "Concept Clé : L'Espace Latent"
-    Pensez à l'Espace Latent comme à une "carte conceptuelle" où les choses similaires sont regroupées. Les "chiens" sont dans un quartier, les "couchers de soleil vibrants" dans un autre. L'IA navigue sur cette carte pour trouver l'image exacte que vous avez décrite.
+La majorité des outils d'IA génératrice d'images (Midjourney, ChatGPT, DALL-E) masquent la complexité technique derrière une simple barre de texte. Cet atelier propose d'ouvrir la "boîte noire" pour comprendre les mécanismes fondamentaux qui permettent à une machine de transformer des données numériques en représentations visuelles cohérentes.
 
 ---
 
-## 🚀 Pour Commencer
-Dans les chapitres suivants, nous allons :
-1.  **Générer vos premières images** via l'interface simplifiée **LightDiffusion-Next**.
-2.  **Maîtriser les nœuds** avec **ComfyUI**, où vous apprendrez à construire votre propre moteur de génération.
+## Fonctionnement théorique
 
-[Suivant : Guide LightDiffusion-Next &rarr;](light-diffusion.md)
+La génération d'images par diffusion repose sur un processus de réduction du bruit. Contrairement à une croyance commune, l'IA ne "dessine" pas ; elle sculpte une information à partir d'un chaos statistique.
+
+!!! info "Le concept de débruitage"
+    Le processus commence par un bruit gaussien pur (une image composée de pixels aléatoires). L'IA, entraînée sur des millions d'exemples, prédit à chaque étape la quantité de bruit à retirer pour se rapprocher d'un concept connu.
+    
+    ![Processus de débruitage](images/denoising_process.webp)
+    *Visualisation de l'émergence d'une forme à travers les étapes de débruitage.*
+
+---
+
+## Composants fondamentaux
+
+Pour manipuler ces modèles, il est essentiel de comprendre trois composants techniques :
+
+!!! abstract "1. L'Espace Latent"
+    Travailler sur des images en haute résolution pixel par pixel est coûteux en ressources. La diffusion s'effectue donc dans un **espace latent**, une version compressée et mathématique de l'image. Le **VAE (Variational AutoEncoder)** est le composant chargé de la compression et de la décompression de ces données.
+
+!!! abstract "2. Le Guidage (Conditioning)"
+    Le texte que vous saisissez (le prompt) est converti par un encodeur de texte (**CLIP**) en vecteurs mathématiques. Ces vecteurs agissent comme des contraintes qui orientent le processus de débruitage vers un résultat spécifique.
+
+!!! abstract "3. Le Planificateur (Scheduler)"
+    Le scheduler détermine la vitesse et la méthode de retrait du bruit. C'est lui qui définit la trajectoire mathématique que prendra l'IA pour passer du bruit pur à l'image finale.
+
+---
+
+## Structure de l'atelier
+
+L'apprentissage est divisé en deux modules complémentaires :
+
+1.  **Validation des paramètres :** Utilisation de l'interface simplifiée **LightDiffusion** pour isoler et comprendre l'impact des variables de base (Seed, Steps, CFG).
+2.  **Architecture nodale :** Utilisation de **ComfyUI** pour reconstruire manuellement le flux de données et comprendre l'interdépendance des composants.
+
+[Accéder au Module 1 : LightDiffusion &rarr;](light-diffusion.md)

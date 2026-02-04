@@ -1,74 +1,81 @@
-# ComfyUI : Penser en Nœuds
+# Module 2 : Architecture nodale avec ComfyUI
 
-Bienvenue au "Niveau Boss". **ComfyUI** est une interface nodale. Au lieu de simples boutons, vous voyez la "tuyauterie" réelle de l'IA.
-
----
-
-## 🏗️ Anatomie d'un Flux de Travail (Workflow)
-
-Dans ComfyUI, chaque action est un "Nœud". Pour créer une image, les données doivent circuler du modèle à travers plusieurs étapes jusqu'à devenir des pixels.
-
-### Les Blocs de Base :
-1.  **Load Checkpoint :** Charge le modèle d'IA.
-2.  **CLIP Text Encode :** Transforme votre texte en nombres compréhensibles par l'IA.
-3.  **Empty Latent Image :** Crée le "canevas vide" de bruit.
-4.  **KSampler :** Le moteur qui effectue le débruitage.
-5.  **VAE Decode :** Convertit le résultat des "maths" (Latent) en "pixels" (Image).
+ComfyUI est une interface basée sur des graphes de nœuds. Elle permet de visualiser et de manipuler directement le flux de données (workflow). Cette approche est indispensable pour comprendre comment les composants communiquent entre eux.
 
 ---
 
-## 🧩 Défi : Reliez les Points
+## Terminologie technique
 
-Ci-dessous se trouve un diagramme d'un workflow standard, mais les **connexions sont manquantes**.
+*   **Nœud (Node) :** Unité de traitement effectuant une opération spécifique (encodage, échantillonnage, décodage).
+*   **Liaison (Noodle/Edge) :** Connexion transportant un type de donnée spécifique (Model, Clip, Latent, VAE).
+*   **Workflow :** L'ensemble du graphe constituant la pipeline de génération.
 
-### L'Énigme
-Imaginez que vous regardez votre écran. Vous avez ces cinq nœuds, mais ils ne communiquent pas entre eux. **Pouvez-vous deviner où vont les câbles ?**
+---
+
+## Les composants du workflow standard
+
+!!! info "1. Load Checkpoint"
+    C'est le point d'entrée qui charge les poids du modèle. Il distribue les données vers trois flux :
+    *   **MODEL :** Transmis au KSampler.
+    *   **CLIP :** Transmis aux encodeurs de texte.
+    *   **VAE :** Transmis au décodeur final.
+
+    ![Nœud Load Checkpoint](images/ComfyUI/Checkpoint_loader.png)
+
+!!! info "2. CLIP Text Encode"
+    Transforme le texte brut en données compréhensibles par le modèle. Ces données servent de "guide" (Conditioning) au processus de débruitage.
+
+    ![Nœud CLIP Text Encode](images/ComfyUI/Text_encoders.png)
+
+!!! info "3. Empty Latent Image"
+    Définit les dimensions de sortie et génère le bruit initial dans l'espace latent. L'image n'existe pas encore sous forme de pixels à cette étape.
+
+    ![Nœud Empty Latent Image](images/ComfyUI/Empty_latent.png)
+
+!!! info "4. KSampler"
+    Le moteur de calcul. Il reçoit le modèle, les prompts (positif/négatif) et le bruit latent. Il effectue les itérations de débruitage demandées.
+
+    ![Nœud KSampler](images/ComfyUI/KSampler.png)
+
+!!! info "5. VAE Decode"
+    Prend les données mathématiques en sortie du KSampler et utilise le module VAE pour les traduire en pixels affichables.
+
+    ![Nœud VAE Decode](images/ComfyUI/VAE_decode.png)
+
+---
+
+## Exercice : Reconstitution du flux
+
+!!! warning "Objectif du module"
+    Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les liaisons sont rompues. Vous devez reconnecter les flux en respectant la logique de transport des données.
+
+**Schéma logique de connexion :**
 
 ```mermaid
 graph LR
-    subgraph Nodes
-        A[Load Checkpoint]
-        B[CLIP Text Encode - Prompt]
-        C[Empty Latent Image]
-        D[KSampler]
-        E[VAE Decode]
-        F[Save Image]
-    end
+    CP[Load Checkpoint]
+    TE[CLIP Text Encode]
+    EL[Empty Latent]
+    KS[KSampler]
+    VD[VAE Decode]
+    SI[Save Image]
 
-    %% Représentation visuelle des connexions manquantes
-    A -. ? .-> D
-    B -. ? .-> D
-    C -. ? .-> D
-    D -. ? .-> E
-    A -. ? .-> E
-    E -. ? .-> F
+    CP -- MODEL --> KS
+    CP -- CLIP --> TE
+    TE -- CONDITIONING --> KS
+    EL -- LATENT --> KS
+    KS -- LATENT --> VD
+    CP -- VAE --> VD
+    VD -- IMAGE --> SI
 ```
 
-### 📝 Votre Mission :
-Ouvrez ComfyUI et essayez de recréer ceci. Voici la logique à suivre :
-1.  La sortie **MODEL** du nœud "Load Checkpoint" doit aller dans le KSampler.
-2.  La sortie **CONDITIONING** de votre Prompt doit aller dans l'entrée "positive" du KSampler.
-3.  La sortie **LATENT** de "Empty Latent" fournit le bruit de départ au KSampler.
-4.  Le résultat **LATENT** du KSampler doit être **DÉCODÉ** par le VAE.
-5.  Le **VAE** lui-même provient du nœud "Load Checkpoint" !
-
-!!! warning "Erreur Courante"
-    Oublier de connecter le **VAE** du nœud "Load Checkpoint" vers le nœud "VAE Decode" provoquera une erreur. L'IA a besoin de ce VAE spécifique pour "traduire" l'espace latent en couleurs !
-
-!!! tip "Astuce de Pro : Le bruit n'est pas votre ennemi"
-    Dans le nœud **Empty Latent Image**, essayez de changer la taille à `64x64` tout en gardant une sortie finale en `512x512`. Vous verrez l'IA essayer de transformer de gros blocs de couleur en objets détaillés. C'est le secret pour créer des compositions artistiques abstraites !
+!!! tip "Raccourcis d'interface"
+    *   **Double-clic :** Ouverture de la recherche rapide de nœuds.
+    *   **Clic droit sur une entrée :** Permet de convertir un paramètre (ex: seed) en entrée connectable.
+    *   **Glisser-déposer depuis un port :** Propose automatiquement les nœuds compatibles avec le type de donnée.
 
 ---
 
-## 🎯 Objectif Final
-Une fois que vous avez tout connecté correctement, appuyez sur **"Queue Prompt"**. Si une magnifique image sort du nœud "Save Image", vous avez réussi à construire votre premier moteur d'IA !
+## Synthèse de l'atelier
 
----
-
-## 📚 Résumé
-Vous avez appris :
-- Comment fonctionne la Diffusion (Débruitage).
-- Comment utiliser une interface simple (LightDiffusion-Next).
-- Comment construire un moteur personnalisé (ComfyUI).
-
-**Bonne génération !**
+À l'issue de ces modules, vous devriez être en mesure d'identifier chaque étape de la création d'une image : de l'intention textuelle au traitement mathématique dans l'espace latent, jusqu'au décodage final.
