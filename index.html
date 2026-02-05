@@ -329,6 +329,25 @@
 </li>
                 
                 
+                
+                <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button"
+        data-size="default" href="/Atelier-IA/advanced.html"
+        class="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md">
+
+        
+        Pour aller plus loin
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+                
+                
             </ul>
         </div>
     </div>
@@ -401,37 +420,51 @@
     </div>
   </div>
   <div class="typography w-full flex-1 *:data-[slot=alert]:first:mt-0">
-    <p>La majorité des outils d'IA génératrice d'images (Midjourney, ChatGPT, DALL-E) masquent la complexité technique derrière une simple barre de texte. Cet atelier propose d'ouvrir la "boîte noire" pour comprendre les mécanismes fondamentaux qui permettent à une machine de transformer des données numériques en représentations visuelles cohérentes.</p>
+    <p>La majorité des outils d'IA génératrice d'images (Midjourney, ChatGPT, DALL-E) masquent la complexité technique derrière une simple barre de texte. Cet atelier propose d'ouvrir la "boîte noire" pour comprendre les mécanismes fondamentaux qui permettent à une machine de transformer des données numériques en images.</p>
 <hr />
-<h2 id="fonctionnement-theorique">Fonctionnement théorique</h2>
-<p>La génération d'images par diffusion repose sur un processus de réduction du bruit. Contrairement à une croyance commune, l'IA ne "dessine" pas ; elle sculpte une information à partir d'un chaos statistique.</p>
+<h2 id="le-chemin-de-la-donnee">Le Chemin de la Donnée</h2>
+<p>Dans cet atelier, nous allons suivre le parcours d'une idée, de votre texte jusqu'aux pixels de l'image finale.</p>
+<div class="mermaid">graph LR
+    A[Votre Texte] --&gt; B{Le Cerveau IA}
+    B --&gt; C[Image Finale]</div>
+<hr />
+<h2 id="les-concepts-de-base">Les Concepts de Base</h2>
+<h3 id="1-le-debruitage-denoising">1. Le Débruitage (Denoising)</h3>
+<p>La génération d'images par diffusion repose sur un processus de réduction du bruit. L'IA ne "dessine" pas au sens traditionnel ; elle sculpte une information à partir d'un chaos de pixels aléatoires.</p>
 <div class="admonition info">
-<p class="admonition-title">Le concept de débruitage</p>
-<p>Le processus commence par un bruit gaussien pur (une image composée de pixels aléatoires). L'IA, entraînée sur des millions d'exemples, prédit à chaque étape la quantité de bruit à retirer pour se rapprocher d'un concept connu.</p>
-<p><img alt="Processus de débruitage" src="images/denoising_process.webp" />
-<em>Visualisation de l'émergence d'une forme à travers les étapes de débruitage.</em></p>
+<p class="admonition-title">Évolution : Le Diffusion Transformer (DiT)</p>
+<p>Les modèles les plus modernes (comme Flux ou Sora) utilisent une architecture de type <strong>Transformer</strong>. Cela permet à l'IA de mieux comprendre la structure globale de l'image, un peu comme ChatGPT comprend la structure d'une phrase.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Le concept de 'Noodles'</p>
+<p>Dans le monde de l'IA nodale (ComfyUI), on appelle les câbles de liaison des <strong>Noodles</strong>. Chaque noodle transporte une information précise : le texte, la structure ou les couleurs.</p>
+</div>
+<p align="center">
+    <img src="images/denoising_process.webp" alt="Processus de débruitage" class="center-img">
+    <span class="center-text">Visualisation de l'émergence d'une forme à travers les étapes de débruitage.</span>
+</p>
+
 <hr />
-<h2 id="composants-fondamentaux">Composants fondamentaux</h2>
-<p>Pour manipuler ces modèles, il est essentiel de comprendre trois composants techniques :</p>
+<h2 id="les-trois-piliers">Les Trois Piliers</h2>
+<p>Pour comprendre comment l'image est créée, nous allons manipuler trois composants :</p>
 <div class="admonition abstract">
-<p class="admonition-title">1. L'Espace Latent</p>
-<p>Travailler sur des images en haute résolution pixel par pixel est coûteux en ressources. La diffusion s'effectue donc dans un <strong>espace latent</strong>, une version compressée et mathématique de l'image. Le <strong>VAE (Variational AutoEncoder)</strong> est le composant chargé de la compression et de la décompression de ces données.</p>
+<p class="admonition-title">L'Espace Latent</p>
+<p>C'est un espace de travail compressé où l'IA calcule l'image. Imaginez une "esquisse mathématique" invisible avant d'être transformée en pixels.</p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">2. Le Guidage (Conditioning)</p>
-<p>Le texte que vous saisissez (le prompt) est converti par un encodeur de texte (<strong>CLIP</strong>) en vecteurs mathématiques. Ces vecteurs agissent comme des contraintes qui orientent le processus de débruitage vers un résultat spécifique.</p>
+<p class="admonition-title">Le Guidage (Conditioning)</p>
+<p>Le texte que vous saisissez sert de guide. Il oriente l'IA pour que le bruit se transforme en ce que vous avez demandé.</p>
 </div>
 <div class="admonition abstract">
-<p class="admonition-title">3. Le Planificateur (Scheduler)</p>
-<p>Le scheduler détermine la vitesse et la méthode de retrait du bruit. C'est lui qui définit la trajectoire mathématique que prendra l'IA pour passer du bruit pur à l'image finale.</p>
+<p class="admonition-title">Le VAE (Le Traducteur)</p>
+<p>C'est l'outil qui traduit les calculs invisibles de l'espace latent en une image réelle que nous pouvons voir.</p>
 </div>
 <hr />
 <h2 id="structure-de-latelier">Structure de l'atelier</h2>
-<p>L'apprentissage est divisé en deux modules complémentaires :</p>
+<p>L'apprentissage est divisé en deux modules :</p>
 <ol>
-<li><strong>Validation des paramètres :</strong> Utilisation de l'interface simplifiée <strong>LightDiffusion</strong> pour isoler et comprendre l'impact des variables de base (Seed, Steps, CFG).</li>
-<li><strong>Architecture nodale :</strong> Utilisation de <strong>ComfyUI</strong> pour reconstruire manuellement le flux de données et comprendre l'interdépendance des composants.</li>
+<li><strong>Validation des paramètres :</strong> Utilisation de l'interface simplifiée <strong>LightDiffusion</strong> pour tester les réglages de base (Seed, Steps, CFG).</li>
+<li><strong>Architecture nodale :</strong> Passage sur <strong>ComfyUI</strong> avec une approche <strong>"Puzzle"</strong>. Vous devrez reconnecter vous-mêmes les composants pour comprendre le chemin des données.</li>
 </ol>
 <p><a href="light-diffusion.html">Accéder au Module 1 : LightDiffusion &rarr;</a></p>
   </div>
@@ -487,6 +520,12 @@
                         
                     </a>
                     
+                    <a class="text-2xl font-medium" href="advanced.html">
+                        
+                        Pour aller plus loin
+                        
+                    </a>
+                    
                 </div>
             </div>
             
@@ -508,18 +547,34 @@
         
         
         
-        <a href="#fonctionnement-theorique"
+        <a href="#le-chemin-de-la-donnee"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Fonctionnement théorique
+            Le Chemin de la Donnée
         </a>
         
 
         
-        <a href="#composants-fondamentaux"
+        <a href="#les-concepts-de-base"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Composants fondamentaux
+            Les Concepts de Base
+        </a>
+        
+        
+        <a href="#1-le-debruitage-denoising"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="3">
+            1. Le Débruitage (Denoising)
+        </a>
+        
+        
+
+        
+        <a href="#les-trois-piliers"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="2">
+            Les Trois Piliers
         </a>
         
 

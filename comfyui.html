@@ -329,6 +329,25 @@
 </li>
                 
                 
+                
+                <li data-slot="sidebar-menu-item" data-sidebar="menu-item" class="group/menu-item relative">
+    <a data-slot="sidebar-menu-button" data-active="false" data-sidebar="menu-button"
+        data-size="default" href="/Atelier-IA/advanced.html"
+        class="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer/menu-button flex items-center gap-2 rounded-md p-2 text-left outline-hidden ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md">
+
+        
+        Pour aller plus loin
+        
+
+        
+
+        
+
+        
+    </a>
+</li>
+                
+                
             </ul>
         </div>
     </div>
@@ -392,6 +411,31 @@
           </a>
            
           
+          <a
+            data-slot="button"
+            id="next-button"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 extend-touch-target size-8 shadow-none md:size-7"
+            href="/Atelier-IA/advanced.html"
+          >
+            <span class="sr-only">Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="tabler-icon tabler-icon-arrow-right"
+            >
+              <path d="M5 12l14 0"></path>
+              <path d="M13 18l6 -6"></path>
+              <path d="M13 6l6 6"></path>
+            </svg>
+          </a>
+          
         </div>
       </div>
       
@@ -419,33 +463,33 @@
 <li><strong>CLIP :</strong> Transmis aux encodeurs de texte.</li>
 <li><strong>VAE :</strong> Transmis au décodeur final.</li>
 </ul>
-<p><img alt="Nœud Load Checkpoint" src="images/ComfyUI/Checkpoint_loader.png" /></p>
+<p><img alt="Nœud Load Checkpoint" class="center-img" src="images/ComfyUI/Checkpoint_loader.png" /></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">2. CLIP Text Encode</p>
 <p>Transforme le texte brut en données compréhensibles par le modèle. Ces données servent de "guide" (Conditioning) au processus de débruitage.</p>
-<p><img alt="Nœud CLIP Text Encode" src="images/ComfyUI/Text_encoders.png" /></p>
+<p><img alt="Nœud CLIP Text Encode" class="center-img" src="images/ComfyUI/Text_encoders.png" /></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">3. Empty Latent Image</p>
 <p>Définit les dimensions de sortie et génère le bruit initial dans l'espace latent. L'image n'existe pas encore sous forme de pixels à cette étape.</p>
-<p><img alt="Nœud Empty Latent Image" src="images/ComfyUI/Empty_latent.png" /></p>
+<p><img alt="Nœud Empty Latent Image" class="center-img" src="images/ComfyUI/Empty_latent.png" /></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">4. KSampler</p>
 <p>Le moteur de calcul. Il reçoit le modèle, les prompts (positif/négatif) et le bruit latent. Il effectue les itérations de débruitage demandées.</p>
-<p><img alt="Nœud KSampler" src="images/ComfyUI/KSampler.png" /></p>
+<p><img alt="Nœud KSampler" class="center-img" src="images/ComfyUI/KSampler.png" /></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">5. VAE Decode</p>
 <p>Prend les données mathématiques en sortie du KSampler et utilise le module VAE pour les traduire en pixels affichables.</p>
-<p><img alt="Nœud VAE Decode" src="images/ComfyUI/VAE_decode.png" /></p>
+<p><img alt="Nœud VAE Decode" class="center-img" src="images/ComfyUI/VAE_decode.png" /></p>
 </div>
 <hr />
-<h2 id="exercice-reconstitution-du-flux">Exercice : Reconstitution du flux</h2>
+<h2 id="exercice-le-puzzle-logique">Exercice : Le Puzzle Logique</h2>
 <div class="admonition warning">
-<p class="admonition-title">Objectif du module</p>
-<p>Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les liaisons sont rompues. Vous devez reconnecter les flux en respectant la logique de transport des données.</p>
+<p class="admonition-title">Objectif</p>
+<p>Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les <strong>câbles sont coupés</strong> ! Vous devez reconnecter les flux en respectant la logique de transport des données. Utilisez les couleurs des ports pour vous guider.</p>
 </div>
 <div class="mermaid">graph LR
     CP[Load Checkpoint] --- TE[CLIP Text Encode]
@@ -458,19 +502,45 @@
 <details class="success">
 <summary>Voir la solution (Workflow complet)</summary>
 <p>N'ouvrez ce bloc que si vous êtes bloqué ou pour vérifier votre travail.</p>
-<p><img alt="Workflow complet ComfyUI" src="images/ComfyUI/full_workflow.png" /></p>
+<p><img alt="Workflow complet ComfyUI" class="center-img" src="images/ComfyUI/full_workflow.png" /></p>
 </details>
-<div class="admonition tip">
-<p class="admonition-title">Raccourcis d'interface</p>
+<hr />
+<h2 id="astuces-de-pro-shortcuts">Astuces de Pro (Shortcuts)</h2>
+<p>Pour manipuler le puzzle comme un expert :</p>
 <ul>
-<li><strong>Double-clic :</strong> Ouverture de la recherche rapide de nœuds.</li>
-<li><strong>Clic droit sur une entrée :</strong> Permet de convertir un paramètre (ex: seed) en entrée connectable.</li>
-<li><strong>Glisser-déposer depuis un port :</strong> Propose automatiquement les nœuds compatibles avec le type de donnée.</li>
+<li><strong>Recherche rapide :</strong> Double-cliquez n'importe où sur le fond pour ouvrir le menu de recherche.</li>
+<li><strong>Clonage :</strong> Maintenez <strong>ALT</strong> et faites glisser un nœud pour le dupliquer.</li>
+<li><strong>Aide au branchement :</strong> Tirez un câble depuis un point de sortie et lâchez-le dans le vide ; ComfyUI vous proposera uniquement les nœuds compatibles.</li>
+</ul>
+<hr />
+<h2 id="bonus-le-puzzle-inverse-img2img">[BONUS] Le Puzzle Inversé : img2img</h2>
+<p>Si vous avez terminé le premier puzzle, essayez de comprendre comment transformer une image existante au lieu de partir d'un canevas vide.</p>
+<div class="admonition fastforward">
+<p class="admonition-title">Le concept img2img</p>
+<p>Dans un flux <strong>img2img</strong>, on remplace le nœud <strong>Empty Latent Image</strong> par un duo :</p>
+<ol>
+<li><strong>Load Image</strong> : Pour charger votre fichier.</li>
+<li><strong>VAE Encode</strong> : Pour transformer vos pixels en "Latent" (le langage de l'IA).</li>
+</ol>
+</div>
+<div class="mermaid">graph LR
+    IMG[Load Image] -- IMAGE --&gt; VE[VAE Encode]
+    CP[Load Checkpoint] -- VAE --&gt; VE
+    VE -- LATENT --&gt; KS[KSampler]
+
+    style VE fill:#f96,stroke:#333,stroke-width:2px</div>
+<p><strong>Défi :</strong> Dans ComfyUI, essayez d'ajouter ces deux nœuds et de les connecter au KSampler. </p>
+<div class="admonition tip">
+<p class="admonition-title">Réglages recommandés</p>
+<ul>
+<li><strong>Prompt de départ</strong> : "A beautiful oil painting, hyper-detailed, masterpiece"</li>
+<li><strong>Sampler</strong> : Utilisez <code>kl_optimal</code> pour un résultat fluide.</li>
+<li><strong>Denoise</strong> : Commencez à <strong>0.65</strong>. C'est le "sweet spot" pour transformer l'image tout en gardant la structure originale.</li>
 </ul>
 </div>
 <hr />
-<h2 id="synthese-de-latelier">Synthèse de l'atelier</h2>
-<p>À l'issue de ces modules, vous devriez être en mesure d'identifier chaque étape de la création d'une image : de l'intention textuelle au traitement mathématique dans l'espace latent, jusqu'au décodage final.</p>
+<h2 id="synthese">Synthèse</h2>
+<p>À l'issue de ces modules, vous avez "ouvert la boîte noire". Vous savez maintenant que l'IA ne crée pas d'image ex-nihilo, mais qu'elle sculpte un espace mathématique (Latent) guidée par vos mots (CLIP) et traduite par un décodeur (VAE).</p>
   </div>
 </article>
                                 <div class="mx-auto flex flex-wrap h-16 w-full max-w-2xl items-center gap-2 px-4 md:px-0">
@@ -488,6 +558,19 @@
         <span class="max-[500px]:hidden">LightDiffusion-Next</span>
     </a>
     
+    
+    <a data-slot="button"
+        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 rounded-md gap-1.5 px-3 has-[&gt;svg]:px-2.5 ml-auto shadow-none"
+        href="/Atelier-IA/advanced.html">
+        <span class="max-[500px]:hidden">Pour aller plus loin</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="tabler-icon tabler-icon-arrow-right ">
+            <path d="M5 12l14 0"></path>
+            <path d="M13 18l6 -6"></path>
+            <path d="M13 6l6 6"></path>
+        </svg>
+    </a>
     
 </div>
                                 <dialog id="bottom-sidebar" onclick="onBottomSidebarDialogClick(event)" class="bg-transparent"
@@ -521,6 +604,12 @@
                     <a class="text-2xl font-medium" href="comfyui.html">
                         
                         ComfyUI
+                        
+                    </a>
+                    
+                    <a class="text-2xl font-medium" href="advanced.html">
+                        
+                        Pour aller plus loin
                         
                     </a>
                     
@@ -561,18 +650,34 @@
         
 
         
-        <a href="#exercice-reconstitution-du-flux"
+        <a href="#exercice-le-puzzle-logique"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Exercice : Reconstitution du flux
+            Exercice : Le Puzzle Logique
         </a>
         
 
         
-        <a href="#synthese-de-latelier"
+        <a href="#astuces-de-pro-shortcuts"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Synthèse de l'atelier
+            Astuces de Pro (Shortcuts)
+        </a>
+        
+
+        
+        <a href="#bonus-le-puzzle-inverse-img2img"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="2">
+            [BONUS] Le Puzzle Inversé : img2img
+        </a>
+        
+
+        
+        <a href="#synthese"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="2">
+            Synthèse
         </a>
         
 
