@@ -1,13 +1,5 @@
 /* Custom styles for Atelier IA - Modern Shadcn inspired */
 
-:root {
-    --primary: #0f172a;
-    --secondary: #64748b;
-    --accent: #3b82f6;
-    --background: #ffffff;
-    --card-bg: #f8fafc;
-    --border: #e2e8f0;
-}
 
 /* Base styling */
 body {
