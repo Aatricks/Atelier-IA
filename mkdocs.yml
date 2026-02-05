@@ -23,6 +23,7 @@ nav:
   - Introduction: index.md
   - "LightDiffusion-Next": light-diffusion.md
   - "ComfyUI": comfyui.md
+  - "Pour aller plus loin": advanced.md
 
 markdown_extensions:
   - admonition

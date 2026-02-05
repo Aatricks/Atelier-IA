@@ -21,39 +21,38 @@ ComfyUI est une interface basée sur des graphes de nœuds. Elle permet de visua
     *   **CLIP :** Transmis aux encodeurs de texte.
     *   **VAE :** Transmis au décodeur final.
 
-    ![Nœud Load Checkpoint](images/ComfyUI/Checkpoint_loader.png)
+    ![Nœud Load Checkpoint](images/ComfyUI/Checkpoint_loader.png){ .center-img }
 
 !!! info "2. CLIP Text Encode"
 
     Transforme le texte brut en données compréhensibles par le modèle. Ces données servent de "guide" (Conditioning) au processus de débruitage.
 
-    ![Nœud CLIP Text Encode](images/ComfyUI/Text_encoders.png)
+    ![Nœud CLIP Text Encode](images/ComfyUI/Text_encoders.png){ .center-img }
 
 !!! info "3. Empty Latent Image"
 
     Définit les dimensions de sortie et génère le bruit initial dans l'espace latent. L'image n'existe pas encore sous forme de pixels à cette étape.
 
-    ![Nœud Empty Latent Image](images/ComfyUI/Empty_latent.png)
+    ![Nœud Empty Latent Image](images/ComfyUI/Empty_latent.png){ .center-img }
 
 !!! info "4. KSampler"
 
     Le moteur de calcul. Il reçoit le modèle, les prompts (positif/négatif) et le bruit latent. Il effectue les itérations de débruitage demandées.
 
-    ![Nœud KSampler](images/ComfyUI/KSampler.png)
+    ![Nœud KSampler](images/ComfyUI/KSampler.png){ .center-img }
 
 !!! info "5. VAE Decode"
 
     Prend les données mathématiques en sortie du KSampler et utilise le module VAE pour les traduire en pixels affichables.
 
-    ![Nœud VAE Decode](images/ComfyUI/VAE_decode.png)
+    ![Nœud VAE Decode](images/ComfyUI/VAE_decode.png){ .center-img }
 
 ---
 
-## Exercice : Reconstitution du flux
+## Exercice : Le Puzzle Logique
 
-!!! warning "Objectif du module"
-
-    Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les liaisons sont rompues. Vous devez reconnecter les flux en respectant la logique de transport des données.
+!!! warning "Objectif"
+    Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les **câbles sont coupés** ! Vous devez reconnecter les flux en respectant la logique de transport des données. Utilisez les couleurs des ports pour vous guider.
 
 ```mermaid
 graph LR
@@ -70,16 +69,19 @@ graph LR
 
     N'ouvrez ce bloc que si vous êtes bloqué ou pour vérifier votre travail.
     
-    ![Workflow complet ComfyUI](images/ComfyUI/full_workflow.png)
-
-!!! tip "Raccourcis d'interface"
-
-    *   **Double-clic :** Ouverture de la recherche rapide de nœuds.
-    *   **Clic droit sur une entrée :** Permet de convertir un paramètre (ex: seed) en entrée connectable.
-    *   **Glisser-déposer depuis un port :** Propose automatiquement les nœuds compatibles avec le type de donnée.
+    ![Workflow complet ComfyUI](images/ComfyUI/full_workflow.png){ .center-img }
 
 ---
 
-## Synthèse de l'atelier
+## Astuces de Pro (Shortcuts)
 
-À l'issue de ces modules, vous devriez être en mesure d'identifier chaque étape de la création d'une image : de l'intention textuelle au traitement mathématique dans l'espace latent, jusqu'au décodage final.
+Pour manipuler le puzzle comme un expert :
+
+*   **Recherche rapide :** Double-cliquez n'importe où sur le fond pour ouvrir le menu de recherche.
+*   **Clonage :** Maintenez **ALT** et faites glisser un nœud pour le dupliquer.
+*   **Aide au branchement :** Tirez un câble depuis un point de sortie et lâchez-le dans le vide ; ComfyUI vous proposera uniquement les nœuds compatibles.
+
+---
+
+## Synthèse
+À l'issue de ces modules, vous avez "ouvert la boîte noire". Vous savez maintenant que l'IA ne crée pas d'image ex-nihilo, mais qu'elle sculpte un espace mathématique (Latent) guidée par vos mots (CLIP) et traduite par un décodeur (VAE).

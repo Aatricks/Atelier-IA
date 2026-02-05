@@ -1,26 +1,115 @@
-/* Custom styles for Atelier IA */
+/* Custom styles for Atelier IA - Modern Shadcn inspired */
 
-/* Images */
+:root {
+    --primary: #0f172a;
+    --secondary: #64748b;
+    --accent: #3b82f6;
+    --background: #ffffff;
+    --card-bg: #f8fafc;
+    --border: #e2e8f0;
+}
+
+/* Base styling */
+body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Images Premium Look */
 .md-content img {
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    margin: 1.5em 0;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 2em 0;
+}
+
+.center-img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+}
+
+.center-text {
+    text-align: center;
+    display: block;
+    margin-top: -1.5em;
+    margin-bottom: 2em;
+    font-style: italic;
+    color: var(--secondary);
+}
+
+table {
+    table-layout: fixed;
+    /* Force equal cell widths if possible */
+}
+
+table img {
     width: 100%;
-    max-width: 800px;
+    height: auto;
+    margin: 0 !important;
+}
+
+.md-content img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Admonitions */
 .md-typeset .admonition {
-    border-radius: 8px;
-    border-left-width: 4px;
+    border-radius: 12px;
+    border-left-width: 6px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-/* Mermaid */
+/* Custom Mermaid Styling */
 .mermaid {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 1em 0;
-    display: block;
+    background: var(--card-bg) !important;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin: 2em 0;
+    transition: all 0.3s ease;
+}
+
+.mermaid:hover {
+    border-color: var(--accent);
+}
+
+/* Navigation & Tabs */
+.md-tabs {
+    background-color: var(--primary);
+}
+
+/* Responsive Table for GIFs comparison */
+table {
+    border-collapse: separate;
+    border-spacing: 16px;
+    width: 100%;
+}
+
+td {
+    vertical-align: top;
     text-align: center;
+}
+
+/* Button style for links */
+.md-content a[href*=".md"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white !important;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-top: 1em;
+}
+
+.md-content a[href*=".md"]:hover {
+    background-color: var(--accent);
+    transform: scale(1.02);
 }
