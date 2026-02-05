@@ -11,7 +11,7 @@ Ce dépôt contient le support de cours et les ressources pour l'atelier dédié
 
 ### Module 1 : Validation des concepts (LightDiffusion)
 Utilisation d'une interface simplifiée pour isoler les variables fondamentales et observer leur influence sur le résultat visuel.
-- Lien : [LightDiffusion-Next](https://github.com/vladmandic/light-diffusion)
+- Lien : [LightDiffusion-Next](https://github.com/Aatricks/LightDiffusion-Next)
 
 ### Module 2 : Architecture nodale (ComfyUI)
 Approche structurelle consistant à reconstruire manuellement une pipeline de génération fonctionnelle.
