@@ -15,6 +15,7 @@ ComfyUI est une interface basée sur des graphes de nœuds. Elle permet de visua
 ## Les composants du workflow standard
 
 !!! info "1. Load Checkpoint"
+
     C'est le point d'entrée qui charge les poids du modèle. Il distribue les données vers trois flux :
 
     *   **MODEL :** Transmis au KSampler.
@@ -52,6 +53,7 @@ ComfyUI est une interface basée sur des graphes de nœuds. Elle permet de visua
 ## Exercice : Le Puzzle Logique
 
 !!! warning "Objectif"
+
     Dans cet exercice, vous disposez des nœuds nécessaires sur votre canevas, mais les **câbles sont coupés** ! Vous devez reconnecter les flux en respectant la logique de transport des données. Utilisez les couleurs des ports pour vous guider.
 
 ```mermaid
@@ -80,6 +82,36 @@ Pour manipuler le puzzle comme un expert :
 *   **Recherche rapide :** Double-cliquez n'importe où sur le fond pour ouvrir le menu de recherche.
 *   **Clonage :** Maintenez **ALT** et faites glisser un nœud pour le dupliquer.
 *   **Aide au branchement :** Tirez un câble depuis un point de sortie et lâchez-le dans le vide ; ComfyUI vous proposera uniquement les nœuds compatibles.
+
+---
+
+## [BONUS] Le Puzzle Inversé : img2img
+
+Si vous avez terminé le premier puzzle, essayez de comprendre comment transformer une image existante au lieu de partir d'un canevas vide.
+
+!!! fastforward "Le concept img2img"
+
+    Dans un flux **img2img**, on remplace le nœud **Empty Latent Image** par un duo :
+
+    1.  **Load Image** : Pour charger votre fichier.
+    2.  **VAE Encode** : Pour transformer vos pixels en "Latent" (le langage de l'IA).
+
+```mermaid
+graph LR
+    IMG[Load Image] -- IMAGE --> VE[VAE Encode]
+    CP[Load Checkpoint] -- VAE --> VE
+    VE -- LATENT --> KS[KSampler]
+    
+    style VE fill:#f96,stroke:#333,stroke-width:2px
+```
+
+**Défi :** Dans ComfyUI, essayez d'ajouter ces deux nœuds et de les connecter au KSampler. 
+
+!!! tip "Réglages recommandés"
+
+    *   **Prompt de départ** : "A beautiful oil painting, hyper-detailed, masterpiece"
+    *   **Sampler** : Utilisez `kl_optimal` pour un résultat fluide.
+    *   **Denoise** : Commencez à **0.65**. C'est le "sweet spot" pour transformer l'image tout en gardant la structure originale.
 
 ---
 
