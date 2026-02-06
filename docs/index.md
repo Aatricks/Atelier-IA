@@ -21,31 +21,32 @@ graph LR
 ### 1. Le Débruitage (Denoising)
 La génération d'images par diffusion repose sur un processus de réduction du bruit. L'IA ne "dessine" pas au sens traditionnel ; elle sculpte une information à partir d'un chaos de pixels aléatoires.
 
-!!! info "Évolution : Le Diffusion Transformer (DiT)"
-    Les modèles les plus modernes (comme Flux ou Sora) utilisent une architecture de type **Transformer**. Cela permet à l'IA de mieux comprendre la structure globale de l'image, un peu comme ChatGPT comprend la structure d'une phrase.
-
-!!! info "Le concept de 'Noodles'"
-    Dans le monde de l'IA nodale (ComfyUI), on appelle les câbles de liaison des **Noodles**. Chaque noodle transporte une information précise : le texte, la structure ou les couleurs.
-
-<p align="center">
+!!! info "Le processus en action"
+    <p align="center">
     <img src="images/denoising_process.webp" alt="Processus de débruitage" class="center-img">
-    <span class="center-text">Visualisation de l'émergence d'une forme à travers les étapes de débruitage.</span>
-</p>
+    </p>
+    *Visualisation de l'émergence d'une forme à travers les étapes de débruitage.*
+
+### 2. Entraînement et Nuage de Concepts
+Durant sa phase d'apprentissage, l'IA n'apprend pas par cœur des images, mais des relations statistiques entre des mots et des formes. Elle crée un **nuage de concepts** dans un espace multidimensionnel.
+*   **Proximité sémantique :** Les concepts proches (ex: "chien" et "loup") sont regroupés géographiquement.
+*   **Navigation :** Générer une image revient à demander à l'IA de se déplacer vers une coordonnée précise de ce nuage.
+
+![Nuage de concepts dans l'espace latent](images/example_latent.jpg)
 
 ---
 
-## Les Trois Piliers
+## Les Composants Techniques
 
-Pour comprendre comment l'image est créée, nous allons manipuler trois composants :
+### 1. L'Espace Latent
+C'est un espace de travail compressé où l'IA calcule l'image. Le **VAE (Variational AutoEncoder)** est l'outil qui compresse le monde réel en "latents" et les décompresse en pixels visibles.
 
-!!! abstract "L'Espace Latent"
-    C'est un espace de travail compressé où l'IA calcule l'image. Imaginez une "esquisse mathématique" invisible avant d'être transformée en pixels.
+### 2. Le Guidage et l'Attention
+Le texte que vous saisissez est converti en vecteurs par **CLIP**. Le **mécanisme d'attention** permet ensuite à l'IA de focaliser ses calculs sur des zones spécifiques de l'image en fonction des mots du prompt.
 
-!!! abstract "Le Guidage (Conditioning)"
-    Le texte que vous saisissez sert de guide. Il oriente l'IA pour que le bruit se transforme en ce que vous avez demandé.
+![Visualisation du mécanisme d'attention](images/example_attention.jpg)
 
-!!! abstract "Le VAE (Le Traducteur)"
-    C'est l'outil qui traduit les calculs invisibles de l'espace latent en une image réelle que nous pouvons voir.
+*   **Exemple :** Le mot "chauve" activera une attention forte sur le sommet du crâne, tandis que "papiers" dirigera le calcul vers les objets tenus en main.
 
 ---
 
