@@ -29,6 +29,7 @@ La génération d'images par diffusion repose sur un processus de réduction du 
 
 ### 2. Entraînement et Nuage de Concepts
 Durant sa phase d'apprentissage, l'IA n'apprend pas par cœur des images, mais des relations statistiques entre des mots et des formes. Elle crée un **nuage de concepts** dans un espace multidimensionnel.
+
 *   **Proximité sémantique :** Les concepts proches (ex: "chien" et "loup") sont regroupés géographiquement.
 *   **Navigation :** Générer une image revient à demander à l'IA de se déplacer vers une coordonnée précise de ce nuage.
 
