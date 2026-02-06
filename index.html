@@ -432,33 +432,27 @@
 <h3 id="1-le-debruitage-denoising">1. Le Débruitage (Denoising)</h3>
 <p>La génération d'images par diffusion repose sur un processus de réduction du bruit. L'IA ne "dessine" pas au sens traditionnel ; elle sculpte une information à partir d'un chaos de pixels aléatoires.</p>
 <div class="admonition info">
-<p class="admonition-title">Évolution : Le Diffusion Transformer (DiT)</p>
-<p>Les modèles les plus modernes (comme Flux ou Sora) utilisent une architecture de type <strong>Transformer</strong>. Cela permet à l'IA de mieux comprendre la structure globale de l'image, un peu comme ChatGPT comprend la structure d'une phrase.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Le concept de 'Noodles'</p>
-<p>Dans le monde de l'IA nodale (ComfyUI), on appelle les câbles de liaison des <strong>Noodles</strong>. Chaque noodle transporte une information précise : le texte, la structure ou les couleurs.</p>
-</div>
-<p align="center">
-    <img src="images/denoising_process.webp" alt="Processus de débruitage" class="center-img">
-    <span class="center-text">Visualisation de l'émergence d'une forme à travers les étapes de débruitage.</span>
+<p class="admonition-title">Le processus en action</p>
+<p><p align="center">
+<img src="images/denoising_process.webp" alt="Processus de débruitage" class="center-img">
 </p>
-
+<em>Visualisation de l'émergence d'une forme à travers les étapes de débruitage.</em></p>
+</div>
+<h3 id="2-entrainement-et-nuage-de-concepts">2. Entraînement et Nuage de Concepts</h3>
+<p>Durant sa phase d'apprentissage, l'IA n'apprend pas par cœur des images, mais des relations statistiques entre des mots et des formes. Elle crée un <strong>nuage de concepts</strong> dans un espace multidimensionnel.
+*   <strong>Proximité sémantique :</strong> Les concepts proches (ex: "chien" et "loup") sont regroupés géographiquement.
+*   <strong>Navigation :</strong> Générer une image revient à demander à l'IA de se déplacer vers une coordonnée précise de ce nuage.</p>
+<p><img alt="Nuage de concepts dans l'espace latent" src="images/example_latent.jpg" /></p>
 <hr />
-<h2 id="les-trois-piliers">Les Trois Piliers</h2>
-<p>Pour comprendre comment l'image est créée, nous allons manipuler trois composants :</p>
-<div class="admonition abstract">
-<p class="admonition-title">L'Espace Latent</p>
-<p>C'est un espace de travail compressé où l'IA calcule l'image. Imaginez une "esquisse mathématique" invisible avant d'être transformée en pixels.</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">Le Guidage (Conditioning)</p>
-<p>Le texte que vous saisissez sert de guide. Il oriente l'IA pour que le bruit se transforme en ce que vous avez demandé.</p>
-</div>
-<div class="admonition abstract">
-<p class="admonition-title">Le VAE (Le Traducteur)</p>
-<p>C'est l'outil qui traduit les calculs invisibles de l'espace latent en une image réelle que nous pouvons voir.</p>
-</div>
+<h2 id="les-composants-techniques">Les Composants Techniques</h2>
+<h3 id="1-lespace-latent">1. L'Espace Latent</h3>
+<p>C'est un espace de travail compressé où l'IA calcule l'image. Le <strong>VAE (Variational AutoEncoder)</strong> est l'outil qui compresse le monde réel en "latents" et les décompresse en pixels visibles.</p>
+<h3 id="2-le-guidage-et-lattention">2. Le Guidage et l'Attention</h3>
+<p>Le texte que vous saisissez est converti en vecteurs par <strong>CLIP</strong>. Le <strong>mécanisme d'attention</strong> permet ensuite à l'IA de focaliser ses calculs sur des zones spécifiques de l'image en fonction des mots du prompt.</p>
+<p><img alt="Visualisation du mécanisme d'attention" src="images/example_attention.jpg" /></p>
+<ul>
+<li><strong>Exemple :</strong> Le mot "chauve" activera une attention forte sur le sommet du crâne, tandis que "papiers" dirigera le calcul vers les objets tenus en main.</li>
+</ul>
 <hr />
 <h2 id="structure-de-latelier">Structure de l'atelier</h2>
 <p>L'apprentissage est divisé en deux modules :</p>
@@ -568,14 +562,34 @@
             1. Le Débruitage (Denoising)
         </a>
         
+        <a href="#2-entrainement-et-nuage-de-concepts"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="3">
+            2. Entraînement et Nuage de Concepts
+        </a>
+        
         
 
         
-        <a href="#les-trois-piliers"
+        <a href="#les-composants-techniques"
             class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
             data-active="false" data-depth="2">
-            Les Trois Piliers
+            Les Composants Techniques
         </a>
+        
+        
+        <a href="#1-lespace-latent"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="3">
+            1. L'Espace Latent
+        </a>
+        
+        <a href="#2-le-guidage-et-lattention"
+            class="text-muted-foreground hover:text-foreground data-[active=true]:text-foreground text-[0.8rem] no-underline transition-colors data-[depth=3]:pl-4 data-[depth=4]:pl-6"
+            data-active="false" data-depth="3">
+            2. Le Guidage et l'Attention
+        </a>
+        
         
 
         
